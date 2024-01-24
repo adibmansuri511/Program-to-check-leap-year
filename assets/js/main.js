@@ -1,26 +1,31 @@
-// program to get the URL
+// program to check leap year
 
 // Get button element and add click event listener on it and assign to element variable.
 const myBtn = document.getElementById("myBtn");
 
-myBtn.addEventListener("click", checkFileExtension);
+myBtn.addEventListener("click", checkLeapYear);
 
 
-function checkFileExtension(e) {
+function checkLeapYear(e) {
     e.preventDefault();
 
-    // Show the result on this #h5 id.
-    const output = document.querySelector('#output');
+    // Show the result on this #result id.
+    const result = document.querySelector('#result');
 
-    // Get file name from form input
-    const fileName = document.getElementById("formFile").value;
+    // Get input year value from the input element.
+    const year = Number(document.getElementById("year").value);
 
-    // By the help of split() method, we will split the filename into 2 parts.The first part will be the filename and the second part will be the extension of the file.
-    // The extension can then be got by popping from the array the last string with the pop() method.This is hence the file extension of the file selected.
-    extension = fileName.split('.').pop();
+    if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
 
-    output.innerHTML = extension;
-    console.log(extension);
+        console.log(`Input year ${year} is a Leap Year!`);
+        result.innerHTML = `Input year <span style="color: #614f7e">${year}</span> is a Leap Year!`;
+
+    } else {
+
+        console.log(`Input year ${year} is not a Leap Year.`);
+        result.innerHTML = `Input year <span style="color: #614f7e">${year}</span> is not a Leap Year.`;
+
+    }
 }
 
 
